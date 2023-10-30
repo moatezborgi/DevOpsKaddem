@@ -15,7 +15,7 @@ pipeline {
         stage('Checking Docker Version') {
             steps {
                 script {
-                    sh 'docker version'
+                    sh 'docker --version'
                 }
             }
         }
