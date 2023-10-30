@@ -2,3 +2,4 @@
             steps {
                sh "sudo docker version"
             }
+  }
