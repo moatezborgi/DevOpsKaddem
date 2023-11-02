@@ -13,7 +13,7 @@ services:
   kaddemProject:
     depends_on:
       - mysqldb
-    image: MoatezBorgi/kaddemProject-1.0
+    image: moatezborgi/kaddemProject-1.0
     restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: ""
