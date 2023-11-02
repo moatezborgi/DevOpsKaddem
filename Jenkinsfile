@@ -14,9 +14,9 @@ pipeline {
             }
         }
 
-   stage("Maven Clean and Compile"){
+   stage("Docker run"){
       steps{
-        sh 'mvn package -DskipTests'
+        sh 'docker run'
       }
     }
      
