@@ -16,7 +16,9 @@ pipeline {
 
    stage("Docker run"){
       steps{
-        sh 'docker-compose up'
+         sh 'docker docker build -t moatezborgi/borgikaddem .
+         sh'docker run -it moatezborgi/borgikaddem'
+         sh 'docker-compose up'
       }
     }
      
