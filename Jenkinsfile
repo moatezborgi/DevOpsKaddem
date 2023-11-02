@@ -14,13 +14,11 @@ pipeline {
             }
         }
 
-        stage('mvn package') {
-            steps {
-                script {
-                    sh 'mvn package'
-                }
-            }
-        }
+   stage("Maven Clean and Compile"){
+      steps{
+        sh 'mvn clean compile'
+      }
+    }
      
 }
 }
