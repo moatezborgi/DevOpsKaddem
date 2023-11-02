@@ -1,12 +1,13 @@
 pipeline {
-   agent {
-  label 'Agent_Jenkins'
-}
+    agent {
+        label 'Agent_Jenkins'
+    }
 
     stages {
         stage('Build') {
             steps {
                 script {
+                    // Checkout the Git repository
                     git branch: 'MoatezBorgi',
                     credentialsId: 'GitHub',
                     url: 'https://github.com/moatezborgi/DevOpsKaddem.git'
@@ -14,14 +15,27 @@ pipeline {
             }
         }
 
-   stage("Docker run"){
-      steps{
-         sh 'docker docker build -t moatezborgi/borgikaddem .'
-         sh 'docker run -it moatezborgi/borgikaddem'
-         sh 'docker push moatezborgi/borgikaddem'
-         sh 'docker-compose up'
-      }
+        stage("Build Artifact") {
+            steps {
+                // Build your Maven project, skipping tests
+                sh 'mvn package -DskipTests'
+            }
+        }
+
+        stage("Docker Build and Run") {
+            steps {
+                // Build the Docker image
+                sh 'docker build -t moatezborgi/borgikaddem .'
+
+                // Run the Docker container in detached mode (-d)
+                sh 'docker run -d -p 8080:8080 moatezborgi/borgikaddem'
+
+                // Push the Docker image to a Docker registry (e.g., Docker Hub)
+                sh 'docker push moatezborgi/borgikaddem'
+
+                // Optionally, if you have a docker-compose.yml file, you can use docker-compose to start your services
+                sh 'docker-compose up -d'
+            }
+        }
     }
-     
-}
 }
