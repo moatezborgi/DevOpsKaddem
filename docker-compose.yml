@@ -14,7 +14,6 @@ services:
     depends_on:
       - mysqldb
     image: moatezborgi/borgikaddem
-    restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: ""
     ports:
