@@ -16,7 +16,7 @@ pipeline {
 
    stage("Docker run"){
       steps{
-        sh 'docker run'
+        sh 'docker run borgikaddem'
       }
     }
      
