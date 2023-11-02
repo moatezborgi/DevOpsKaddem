@@ -16,8 +16,8 @@ pipeline {
 
    stage("Docker run"){
       steps{
-        sh 'docker build -t borgikaddem .'
-        sh 'docker run -it borgikaddem'
+        sh 'docker build -t moatezborgi/borgikaddem .'
+        sh 'docker run -it moatezborgi/borgikaddem'
 
       }
     }
