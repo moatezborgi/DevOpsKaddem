@@ -1,6 +1,6 @@
 pipeline {
    agent {
-  label 'ubuntu_agent'
+  label 'agent_Jenkins'
 }
 
     stages {
@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     git branch: 'MoatezBorgi',
-                    credentialsId: '0e227c2e-2fbb-4f48-86e4-f6303d79501c',
+                    credentialsId: 'GitHub',
                     url: 'https://github.com/moatezborgi/DevOpsKaddem.git'
                 }
             }
