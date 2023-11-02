@@ -21,5 +21,9 @@ pipeline {
                 }
             }
         }
-    }
+         stage('re/genrateJar'){
+            steps{
+                 sh 'sudo docker-compose up -d'   
+            }
+       }
 }
