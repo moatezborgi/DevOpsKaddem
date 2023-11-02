@@ -2,7 +2,7 @@ pipeline {
     agent {
         label 'Agent_Jenkins'
     }
-
+  
     stages {
         stage('Build') {
             steps {
@@ -21,6 +21,11 @@ pipeline {
                 sh 'mvn package -DskipTests'
             }
         }
+          stage("Nexus"){
+           steps{
+        sh "mvn deploy -Durl=https://192.168.1.15/repository/maven-releases/ -Drepository.username=admin -Drepository.password=nexus -Dmaven.test.skip"
+             }
+    }
 
         stage("Docker Build and Run") {
             steps {
