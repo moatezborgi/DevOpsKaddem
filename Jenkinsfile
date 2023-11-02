@@ -28,7 +28,7 @@ pipeline {
                 sh 'docker build -t moatezborgi/borgikaddem .'
 
                 // Run the Docker container in detached mode (-d)
-                sh 'docker run -d -p 8080:8080 moatezborgi/borgikaddem'
+                sh 'docker run -d -p 9090:9090 moatezborgi/borgikaddem'
 
                 // Push the Docker image to a Docker registry (e.g., Docker Hub)
                 sh 'docker push moatezborgi/borgikaddem'
