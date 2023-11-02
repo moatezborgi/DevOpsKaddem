@@ -14,17 +14,13 @@ pipeline {
             }
         }
 
-        stage('Checking Docker Version') {
+        stage('mvn package') {
             steps {
                 script {
-                    sh 'docker --version'
+                    sh 'mvn package'
                 }
             }
         }
-         stage('re/genrateJar'){
-            steps{
-                 sh 'docker-compose up -d'   
-            }
-       }
+     
 }
 }
