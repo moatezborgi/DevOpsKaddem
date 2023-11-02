@@ -23,7 +23,7 @@ pipeline {
         }
           stage("Nexus"){
            steps{
-        sh "mvn deploy -Durl=https://192.168.1.15/repository/maven-releases/ -Drepository.username=admin -Drepository.password=nexus -Dmaven.test.skip"
+        sh "mvn deploy -Durl=https://192.168.1.15/repository/maven-releases/ -Drepository.username=admin -Drepository.password=admin -Dmaven.test.skip"
              }
     }
 
