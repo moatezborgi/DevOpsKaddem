@@ -24,5 +24,25 @@ pipeline {
                     sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.100.21/:9000 -Dsonar.login=admin -Dsonar.password=sonar'
             }
         }
+         stage("Nexus"){
+           steps{
+        sh "mvn deploy -Durl=http://192.168.100.21/repository/maven-releases/ -Drepository.username=admin -Drepository.password=admin -Dmaven.test.skip"
+             }
+    }
+         stage("Docker Build and Run") {
+            steps {
+                // Build the Docker image
+                sh 'docker build -t karimabbassi1902/abbasikaddem .'
+
+                // Run the Docker container in detached mode (-d)
+                sh 'docker run -d -p 9090:9090 karimabbassi1902/abbasikaddem'
+
+                // Push the Docker image to a Docker registry (e.g., Docker Hub)
+                sh 'docker push karimabbassi1902/abbasikaddem'
+
+                // Optionally, if you have a docker-compose.yml file, you can use docker-compose to start your services
+                sh 'docker-compose up -d'
+            }
+        }
     }
 }
