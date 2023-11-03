@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Checkout the Git repository
-                    git branch: 'KarimBranch',
+                    git branch: 'FatmaMaazoun',
                     credentialsId: 'GitHub',
                     url: 'https://github.com/moatezborgi/DevOpsKaddem.git'
                 }
