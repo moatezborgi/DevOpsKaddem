@@ -7,8 +7,8 @@ pipeline {
                 script {
                     // Checkout the Git repository
                     git branch: 'FatmaMaazoun',
-                        credentialsId: 'GitHub',
-                            url: 'https://github.com/moatezborgi/DevOpsKaddem.git'
+                    url: 'https://github.com/moatezborgi/DevOpsKaddem'
+                    credentialsId: 'Github_Access',
                 }
             }
         }
