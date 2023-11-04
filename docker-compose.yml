@@ -13,7 +13,7 @@ services:
   kaddemProject:
     depends_on:
       - mysqldb
-    image: karimabbassi1902/abbasikaddem
+    image: fatmamaazoun/fatmakaddem
     environment:
       MYSQL_ROOT_PASSWORD: ""
     ports:
