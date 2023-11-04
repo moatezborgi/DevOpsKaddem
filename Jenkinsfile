@@ -36,9 +36,10 @@ pipeline {
 
                 // Run the Docker container in detached mode (-d)
                 sh 'docker run -d -p 9090:9090 fatmamaazoun/fatmakaddem'
-
-                // Push the Docker image to a Docker registry (e.g., Docker Hub)
+ withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "docker.io/fatmamaazoun/fatmakaddem" ]) {
                   sh 'docker push fatmamaazoun/fatmakaddem'
+        }
+                // Push the Docker image to a Docker registry (e.g., Docker Hub)
 
                 // Optionally, if you have a docker-compose.yml file, you can use docker-compose to start your services
                 sh 'docker-compose up -d'
