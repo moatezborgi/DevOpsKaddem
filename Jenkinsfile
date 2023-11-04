@@ -36,7 +36,7 @@ pipeline {
 
                 // Run the Docker container in detached mode (-d)
                 sh 'docker run -d -p 9090:9090 fatmamaazoun/fatmakaddem'
-withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ]) {
+withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "https://hub.docker.com/repositories/fatmamaazoun" ]) {
         bat "docker push fatmamaazoun/fatmakaddem"
         }
                 // Push the Docker image to a Docker registry (e.g., Docker Hub)
