@@ -42,7 +42,7 @@ pipeline {
                 sh 'docker run -d -p 9091:9091 moatezborgi/borgikaddem'
 
                 // Push the Docker image to a Docker registry (e.g., Docker Hub)
-                sh 'docker push moatezborgi/borgikaddem'
+              //  sh 'docker push moatezborgi/borgikaddem'
 
                 // Optionally, if you have a docker-compose.yml file, you can use docker-compose to start your services
                 sh 'docker-compose up -d'
