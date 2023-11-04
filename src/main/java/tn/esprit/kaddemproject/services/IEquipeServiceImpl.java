@@ -22,9 +22,6 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Service
 public class IEquipeServiceImpl extends IGenericServiceImp<Equipe,Integer> implements IEquipeService{
-
-
-
     @Transactional
   //  @Scheduled(cron = "*/20 * * * * *")
     @Override

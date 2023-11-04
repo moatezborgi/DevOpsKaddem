@@ -36,5 +36,10 @@ public class Etudiant implements Serializable{
     @ManyToMany
     private List<Equipe> equipes;
 
-
+    public Etudiant(Integer idEtudiant,String nomE, String prenomE, String optionE) {
+        this.idEtudiant=idEtudiant;
+        this.nomE = nomE;
+        this.prenomE = prenomE;
+        this.optionE = Option.valueOf(optionE);
+    }
 }

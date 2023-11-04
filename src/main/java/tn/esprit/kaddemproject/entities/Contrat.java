@@ -10,7 +10,8 @@ import javax.persistence.*;
 @Entity
 @ToString
 @Getter @Setter
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 //@Table(name = "contracts")
 public class Contrat implements Serializable{
 
@@ -36,5 +37,12 @@ public class Contrat implements Serializable{
     @ManyToOne
     private Etudiant etudiant;
 
-
+    public Contrat(int idContrat, LocalDate dateDebutContrat, LocalDate dateFinContrat, Specialite specialite, boolean archive, Integer montantContrat) {
+        this.idContrat = idContrat;
+        this.dateDebutContrat = dateDebutContrat;
+        this.dateFinContrat = dateFinContrat;
+        this.specialite = specialite;
+        this.archive = archive;
+        this.montantContrat = montantContrat;
+    }
 }
