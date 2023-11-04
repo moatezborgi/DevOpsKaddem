@@ -33,6 +33,7 @@ pipeline {
             steps {
                 // Build the Docker image
                 sh 'docker build -t karimabbassi1902/abbasikaddem .'
+                    sh "docker login -u karimabbassi1902 -p kiki19201"
 
                 // Run the Docker container in detached mode (-d)
                 sh 'docker run -d -p 9090:9090 karimabbassi1902/abbasikaddem'
