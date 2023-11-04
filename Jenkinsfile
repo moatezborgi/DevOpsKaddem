@@ -32,13 +32,13 @@ pipeline {
          stage("Docker Build and Run") {
             steps {
                 // Build the Docker image
-                sh 'docker build -t karimabbassi1902/abbasikaddem .'
+                sh 'docker build -t fatmamaazoun/fatmakaddem .'
 
                 // Run the Docker container in detached mode (-d)
-                sh 'docker run -d -p 9090:9090 karimabbassi1902/abbasikaddem'
+                sh 'docker run -d -p 9090:9090 fatmamaazoun/fatmakaddem'
 
                 // Push the Docker image to a Docker registry (e.g., Docker Hub)
-                sh 'docker push karimabbassi1902/abbasikaddem'
+                sh 'docker push fatmamaazoun/fatmakaddem'
 
                 // Optionally, if you have a docker-compose.yml file, you can use docker-compose to start your services
                 sh 'docker-compose up -d'
