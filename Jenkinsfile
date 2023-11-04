@@ -30,15 +30,30 @@ pipeline {
         sh "mvn deploy -Durl=http://192.168.100.21/repository/maven-releases/ -Drepository.username=admin -Drepository.password=admin -Dmaven.test.skip"
              }
     }
-    stage("Docker Build and Push") {
-        steps { 
-            script 
-            { def dockerImage = 'fatmamaazoun/fatmakaddem' def dockerHubCredentials = credentials('docker-hub-credentials') 
-                // Build the Docker image sh "docker build -t ${dockerImage} ." 
-             // Push the Docker image to a Docker registry (e.g., Docker Hub) withDockerServer([url: 'https://registry-1.docker.io/v2/']) {
-             withCredentials([dockerUsernamePassword(credentialsId: dockerHubCredentials, runAsUser: '')]) { 
-                 sh "docker login -u ${dockerHubCredentials_USR} -p ${dockerHubCredentials_PSW}" } sh "docker push ${dockerImage}" }
-            // Optionally, if you have a docker-compose.yml file, you can use docker-compose to start your services sh "docker-compose up -d" } }
+  stage("Docker Build and Push") {
+    steps {
+        script {
+            def dockerImage = 'fatmamaazoun/fatmakaddem'
+            def dockerHubCredentials = credentials('docker-hub-credentials')
+
+            // Build the Docker image
+            sh "docker build -t ${dockerImage} ."
+
+            // Push the Docker image to a Docker registry (e.g., Docker Hub)
+            withDockerServer([url: 'https://registry-1.docker.io/v2/']) {
+                withCredentials([usernamePassword(credentialsId: dockerHubCredentials, usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                }
+                sh "docker push ${dockerImage}"
+            }
+
+            // Optionally, if you have a docker-compose.yml file, you can use docker-compose to start your services
+            // You need to navigate to the directory containing the docker-compose.yml file before running docker-compose
+            dir('path/to/your/docker-compose-directory') {
+                sh "docker-compose up -d"
+            }
         }
     }
+}
+
 }
