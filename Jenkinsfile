@@ -36,7 +36,7 @@ pipeline {
                     sh "docker login -u karimabbassi1902 -p kiki190201"
 
                 // Run the Docker container in detached mode (-d)
-                sh 'docker run -d -p 9090:9090 karimabbassi1902/abbasikaddem'
+                sh 'docker run -d -p 9091:9091 karimabbassi1902/abbasikaddem'
 
                 // Push the Docker image to a Docker registry (e.g., Docker Hub)
                 sh 'docker push karimabbassi1902/abbasikaddem'
