@@ -4,7 +4,7 @@ pipeline {
     }
   
     stages {
-        stage('Build') {
+        stage('Checkout the Git repository') {
             steps {
                 script {
                     // Checkout the Git repository
@@ -32,17 +32,27 @@ pipeline {
         sh "mvn deploy -Durl=https://192.168.1.15/repository/maven-releases/ -Drepository.username=admin -Drepository.password=admin -Dmaven.test.skip"
              }
     }
-
-        stage("Docker Build and Run") {
-            steps {
-                // Build the Docker image
+     stage("Docker Build"){
+           steps{
                 sh 'docker build -t moatezborgi/borgikaddem .'
-
-                // Run the Docker container in detached mode (-d)
+             }
+    }
+           stage("Docker run"){
+           steps{
                 sh 'docker run -d -p 9091:9091 moatezborgi/borgikaddem'
+             }
+    }
+              stage("Docker push"){
+           steps{
+                sh 'docker push moatezborgi/borgikaddem'
+             }
+    }
+        stage("Docker compose up") {
+            steps {
+ 
+                // Run the Docker container in detached mode (-d)
 
                 // Push the Docker image to a Docker registry (e.g., Docker Hub)
-                sh 'docker push moatezborgi/borgikaddem'
 
                 // Optionally, if you have a docker-compose.yml file, you can use docker-compose to start your services
                 sh 'docker-compose up -d'
