@@ -17,12 +17,18 @@ pipeline {
             steps {
                 // Build your Maven project, skipping tests
                 sh 'mvn clean compile'
-                 sh 'mvn test'
+                 
 
                 sh 'mvn package -DskipTests'
             }
         }
 
+          stage('TestMOCKITO') {
+            steps {
+                
+                sh 'mvn test'
+            }
+        }
         stage('SonarQube Analysis') {
             steps {
                 // Add this command to execute the SonarQube analysis
