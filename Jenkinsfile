@@ -17,6 +17,8 @@ pipeline {
             steps {
                 // Build your Maven project, skipping tests
                 sh 'mvn clean compile'
+                 sh 'mvn test'
+
                 sh 'mvn package -DskipTests'
             }
         }
