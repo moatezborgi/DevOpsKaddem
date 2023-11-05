@@ -52,7 +52,7 @@ pipeline {
                     sh "docker login -u fatmamaazoun -p github211"
 
                     // Run the Docker container
-                    sh 'docker run -d -p 9090:9090 fatmamaazoun/fatmakaddem'
+                    sh 'docker run -d -p 9091:9091 fatmamaazoun/fatmakaddem'
 
                     // Push the Docker image to a Docker registry (e.g., Docker Hub)
                     sh 'docker push fatmamaazoun/fatmakaddem'
