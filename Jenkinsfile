@@ -12,6 +12,12 @@ pipeline {
                 }
             }
         }
+            stage("TestMOCKITO") {
+            steps {
+                // Build your Maven project, skipping tests
+                sh 'mvn test'
+            }
+        }
               stage("Build Artifact") {
             steps {
                 // Build your Maven project, skipping tests
