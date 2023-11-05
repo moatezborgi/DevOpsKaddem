@@ -52,6 +52,8 @@ pipeline {
               stage("Docker push"){
            steps{
                 sh 'docker push moatezborgi/borgikaddem'
+                sh 'docker push https://192.168.1.15/repository/maven-releases/borgikaddem'
+
              }
     }
         stage("Docker compose up") {
