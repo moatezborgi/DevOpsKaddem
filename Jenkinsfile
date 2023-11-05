@@ -12,7 +12,7 @@ pipeline {
                 }
             }
         }
-                stage("Build Artifact") {
+              stage("Build Artifact") {
             steps {
                 // Build your Maven project, skipping tests
                 sh 'mvn package -DskipTests'
