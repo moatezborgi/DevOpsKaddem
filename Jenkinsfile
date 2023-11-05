@@ -14,7 +14,7 @@ pipeline {
         }
             stage("TestMOCKITO") {
             steps {
-                // Build your Maven project, skipping tests
+                //TESTTT
                 sh 'mvn test'
             }
         }
