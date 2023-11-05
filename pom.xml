@@ -76,17 +76,18 @@
         </dependency>
     </dependencies>
 <distributionManagement>
-		<repository>
-			<id>deploymentRepo</id>
-			<name>Nexus Repository</name>
-			<url>http://192.168.1.15:8081/repository/maven-releases/</url>
-		</repository>
-	<repository>
-			<id>deploymentRepo</id>
-			<name>Docker Nexus Repository</name>
-			<url>http://192.168.1.15:8081/repository/dev-opskaddem/</url>
-		</repository>
-	</distributionManagement>
+    <repository>
+        <id>deploymentRepo</id>
+        <name>Nexus Repository</name>
+        <url>http://192.168.1.15:8081/repository/maven-releases/</url>
+    </repository>
+    <repository>
+        <id>deploymentRepo</id>
+        <name>Docker Nexus Repository</name>
+        <url>http://192.168.1.15:8081/repository/dev-opskaddem/</url>
+    </repository>
+</distributionManagement>
+
     <build>
         <plugins>
             <plugin>
