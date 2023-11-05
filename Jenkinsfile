@@ -38,13 +38,13 @@ pipeline {
             steps {
                 // Build the Docker image
                 sh 'docker build -t sofiene15/kehiakaddem .'
-                    sh "docker login -u sofiene15 -p fcbarca2000"
+                sh "docker login -u sofiene15 -p fcbarca2000"
 
                 // Run the Docker container in detached mode (-d)
                 sh 'docker run -d -p 9091:9091 sofiene15/kehiakaddem'
 
                 // Push the Docker image to a Docker registry (e.g., Docker Hub)
-               // sh 'docker push sofiene15/kehiakaddem'
+                sh 'docker push sofiene15/kehiakaddem'
 
                 // Optionally, if you have a docker-compose.yml file, you can use docker-compose to start your services
                 sh 'docker-compose up -d'
