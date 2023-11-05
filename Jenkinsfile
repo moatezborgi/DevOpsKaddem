@@ -45,23 +45,5 @@ pipeline {
                 sh 'docker-compose up -d'
             }
 
-        stage('Prometheus Setup') {
-            steps {
-                sh 'docker run -d -p 9090:9090 --name prometheus prom/prometheus'
-            }
-        }
-        stage('Mockito JUnit') {
-            steps {
-                sh 'mvn test'  // Or any other command to run tests, including Prometheus monitoring
-            }
-        }
 
-        stage('Grafana Setup') {
-            steps {
-                sh 'docker run -d -p 3000:3000 --name grafana grafana/grafana'
-            }
-        }
-        }
-        }
-    }
 }
