@@ -55,6 +55,24 @@ pipeline {
 
              }
     }
+
+
+stage("Docker Push to Nexus") {
+    steps {
+        script {
+            def nexusUrl = "http://192.168.1.15:8081/repository/KaddemImageDocker/"
+            def nexusUsername = "admin"
+            def nexusPassword = "admin"
+            
+            docker.withRegistry(nexusUrl, nexusUsername, nexusPassword) {
+                // Tag the Docker image with the Nexus repository URL
+                docker.image("moatezborgi/borgikaddem").push("${nexusUrl}/moatezborgi/borgikaddem:1")
+            }
+        }
+    }
+}
+
+        
         stage("Docker compose up") {
             steps {
  
