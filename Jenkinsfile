@@ -15,12 +15,20 @@ pipeline {
 
         stage("Build Artifact") {
             steps {
-                  sh 'mvn test'
+                  // sh 'mvn clean compile'
 
                 // Build your Maven project, skipping tests
                 sh 'mvn package -DskipTests'
             }
         }
+
+         stage('Test Junit and Mockito') {
+            steps {
+                
+                sh 'mvn test'
+            }
+        }
+        
          stage('SonarQube Analysis') {
             steps {
                 
